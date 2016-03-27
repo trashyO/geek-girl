@@ -3,17 +3,17 @@
 
     let packageJson = require("./package.json");
     let semver = require("semver");
+    let jshint = require("simplebuild-jshint");
 
     const EXPECTED_NODE_VERSION = packageJson.engines.node;
 
     //******* Global Tasks *******
     desc("Default build.");
-    task("default", ["check-version"], function(){
+    task("default", ["check-version", "lint"], function(){
        console.log("Hello, I'm the default task");
         console.log("\n\nBUILD OK");
     });
 
-    //******* Local Tasks *******
     desc("Check external dependency versions");
     task("check-version", function() {
         console.log("Checking node version: .");
