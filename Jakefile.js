@@ -24,6 +24,37 @@
         }
     });
 
+    desc("Linting javascript");
+    task("lint", function() {
+        process.stdout.write("Linting JavaScript: ");
+
+        jshint.checkFiles({
+            files: ["Jakefile.js", "src/**/*.js"],
+            options: {  esnext: true,
+                bitwise: true,
+                curly: true,
+                eqeqeq: true,
+                forin: true,
+                freeze: true,
+                futurehostile: true,
+                latedef: "nofunc",
+                maxcomplexity: 5,
+                maxdepth: 2,
+                maxparams: 4,
+                nocomma: true,
+                nonew: true,
+                quotmark: "double",
+                strict: true,
+                undef: true,
+                node: true,
+                browser: true,
+                noarg: true},
+            globals: {
+            }
+        }, complete, fail);
+    }, {async: true});
+
+
     desc("Run unit tests");
     task("unit-tests", function(){
         console.log("Placeholder for unit tests.")
