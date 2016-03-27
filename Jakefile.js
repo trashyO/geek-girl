@@ -1,5 +1,5 @@
 // Created by Tracey Oliver on 12/12/2015
-/* globals jake: false, desc: false, task: false, fail: false, complete: false  */
+/* globals jake:false, desc:false, task:false, fail: alse, complete:false  */
 
 (function() {
     "use strict";
@@ -17,6 +17,13 @@
         console.log("\n\nBUILD OK");
     });
 
+    desc("Run http server");
+    task("run", function(){
+        console.log("Running http-server");
+        jake.exec("node node_modules/http-server/bin/http-server src", {interactive: true}, complete);
+    });
+
+    //******* Local Tasks *******
     desc("Check external dependency versions");
     task("check-version", function() {
         console.log("Checking node version: .");
