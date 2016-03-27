@@ -2,8 +2,7 @@
     "use strict";
 
     let packageJson = require("./package.json");
-    //const EXPECTED_NODE_VERSION = packageJson.engines.node;
-    const EXPECTED_NODE_VERSION = "v4.2.3";
+    const EXPECTED_NODE_VERSION = packageJson.engines.node;
 
     desc("Default build.");
     task("default", function(){
