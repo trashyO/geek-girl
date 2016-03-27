@@ -33,7 +33,7 @@
 
         jshint.checkFiles({
             files: ["Jakefile.js", "src/**/*.js"],
-            options: {  esnext: true,
+            options: {
                 bitwise: true,
                 curly: true,
                 eqeqeq: true,
@@ -50,6 +50,7 @@
                 strict: true,
                 undef: true,
                 node: true,
+                esversion: 6,
                 browser: true,
                 noarg: true},
             globals: {desc, task
