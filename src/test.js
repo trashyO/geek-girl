@@ -7,7 +7,7 @@
     let chai = require("chai"),
         assert = chai.assert,
         expect = chai.expect,
-        should = chai.should()
+        should = chai.should();
 
     assert.equal(add(3, 4), 7);
     expect(add(3, 4)).to.equal(7);

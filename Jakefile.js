@@ -1,3 +1,6 @@
+// Created by Tracey Oliver on 12/12/2015
+/* globals jake: false, desc: false, task: false, fail: false, complete: false  */
+
 (function() {
     "use strict";
 
@@ -49,7 +52,7 @@
                 node: true,
                 browser: true,
                 noarg: true},
-            globals: {
+            globals: {desc, task
             }
         }, complete, fail);
     }, {async: true});
