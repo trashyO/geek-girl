@@ -1,4 +1,4 @@
 (function() {
     "use strict";
-    console.log("BUILD OK");
+    console.log("\n\nBUILD OK");
 }());
