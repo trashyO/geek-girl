@@ -63,7 +63,8 @@
         karma.run({
             configFile: KARMA_CONF,
             expectedBrowsers: [
-                "Chrome 48.0.2564 (Mac OS X 10.10.4)"
+                "Chrome 48.0.2564 (Mac OS X 10.10.4)",
+                "Safari 8.0.7 (Mac OS X 10.10.4)"
             ],
             strict: !process.env.loose
         }, complete, fail);
