@@ -7,10 +7,16 @@
     let packageJson = require("./package.json");
     let semver = require("semver");
     let jshint = require("simplebuild-jshint");
+    let karma = require("simplebuild-karma");
 
     const EXPECTED_NODE_VERSION = packageJson.engines.node;
 
     //******* Global Tasks *******
+    desc("Start Karma");
+    task("karma", function(){
+        karma.start({configFile: "karma.conf.js"}, complete, fail), {async: true}
+    });
+
     desc("Default build.");
     task("default", ["check-version", "lint"], function(){
        console.log("Hello, I'm the default task");
