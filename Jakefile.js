@@ -47,26 +47,7 @@
 
         jshint.checkFiles({
             files: ["Jakefile.js", "src/**/*.js"],
-            options: {
-                bitwise: true,
-                curly: true,
-                eqeqeq: true,
-                forin: true,
-                freeze: true,
-                futurehostile: true,
-                latedef: "nofunc",
-                maxcomplexity: 5,
-                maxdepth: 2,
-                maxparams: 4,
-                nocomma: true,
-                nonew: true,
-                quotmark: "double",
-                strict: true,
-                undef: true,
-                node: true,
-                esversion: 6,
-                browser: true,
-                noarg: true},
+            options: lintOptions(),
             globals: {desc, task
             }
         }, complete, fail);
@@ -88,4 +69,28 @@
     task("acceptance-tests", function(){
         console.log("Placeholder for acceptance tests.");
     });
+
+    function lintOptions() {
+        return {
+            bitwise: true,
+            curly: true,
+            eqeqeq: true,
+            forin: true,
+            freeze: true,
+            futurehostile: true,
+            latedef: "nofunc",
+            maxcomplexity: 5,
+            maxdepth: 2,
+            maxparams: 4,
+            nocomma: true,
+            nonew: true,
+            quotmark: "double",
+            strict: true,
+            undef: true,
+            node: true,
+            esversion: 6,
+            browser: true,
+            noarg: true
+        };
+    }
 }());
