@@ -10,16 +10,19 @@
     let karma = require("simplebuild-karma");
 
     const EXPECTED_NODE_VERSION = packageJson.engines.node;
+    const KARMA_CONF = "karma.conf.js";
 
     //******* Global Tasks *******
     desc("Start Karma");
     task("karma", function() {
         console.log("Starting karma: ");
-        karma.start({configFile: "karma.conf.js"}, complete, fail);
+        karma.start({
+            configFile: KARMA_CONF
+        }, complete, fail);
     }, {async: true});
 
     desc("Default build.");
-    task("default", ["check-version", "lint", "unit-tests"], function(){
+    task("default", ["check-version", "lint", "test"], function(){
        console.log("Running default: ");
         console.log("\n\nBUILD OK");
     });
@@ -54,11 +57,17 @@
     }, {async: true});
 
 
-    desc("Run unit tests");
-    task("unit-tests", function(){
-        console.log("Running unit tests: ");
-        karma.run({configFile: "karma.conf.js", expectedBrowsers: ["Chrome 48.0.2564 (Mac OS X 10.10.4)"]}, complete, fail);
-    }, {async: true});
+    desc("Run tests");
+    task("test", function() {
+        console.log("Testing JavaScript:");
+        karma.run({
+            configFile: KARMA_CONF,
+            expectedBrowsers: [
+                "Chrome 48.0.2564 (Mac OS X 10.10.4)"
+            ],
+            strict: !process.env.loose
+        }, complete, fail);
+    }, { async: true });
 
     desc("Run integration tests");
     task("integration-tests", function() {
