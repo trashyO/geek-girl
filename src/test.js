@@ -1,4 +1,6 @@
 //Created by tracey on 12/12/2015.
+/* globals describe:false, it:false  */
+
 (function () {
     "use strict";
 
