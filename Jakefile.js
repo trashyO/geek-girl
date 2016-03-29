@@ -57,7 +57,7 @@
     desc("Run unit tests");
     task("unit-tests", function(){
         console.log("Running unit tests: ");
-        karma.run({configFile: "karma.conf.js"}, complete, fail);
+        karma.run({configFile: "karma.conf.js", expectedBrowsers: ["Chrome 48.0.2564 (Mac OS X 10.10.4)"]}, complete, fail);
     }, {async: true});
 
     desc("Run integration tests");
