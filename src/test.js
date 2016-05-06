@@ -4,19 +4,16 @@
 (function () {
     "use strict";
 
-    //let chai = require("chai"),
-    //    assert = chai.assert,
-    //    expect = chai.expect,
-    //    should = chai.should();
+    var addition = require("../test/addition.js");
 
     describe("Addition", function(){
 
         it("add 2 numbers", function() {
-            assertEqual(add(3, 4), 7);
+            assertEqual(addition.add(3, 4), 7);
         });
 
         it("IEEE 754 floating point", function() {
-            assertEqual(add(0.1, 0.2), 0.30000000000000004);
+            assertEqual(addition.add(0.1, 0.2), 0.30000000000000004);
         });
     });
 
@@ -24,9 +21,5 @@
         if (actual !== expected) {
             throw new Error("Expected " + expected + " but got " + actual);
         }
-    }
-
-    function add(a, b) {
-        return a + b;
     }
 }());

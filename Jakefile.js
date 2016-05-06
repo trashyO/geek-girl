@@ -33,6 +33,18 @@
         jake.exec("node node_modules/http-server/bin/http-server src", {interactive: true}, complete);
     });
 
+    desc("Run Android emulator");
+    task("run-android-emulator", function () {
+        console.log("Running Android emulator: ");
+        jake.exec("/Users/tracey/Library/Android/sdk/tools/emulator -scale 0.25 -netdelay none -netspeed full -avd Nexus_5X_Edited_API_23", {interactive: true}, complete);
+    });
+
+    desc("Run iOS emulator");
+    task("run-ios-emulator", function () {
+        console.log("Running iOS emulator: ");
+        jake.exec("open -a Simulator", {interactive: true}, complete);
+    });
+
     //******* Local Tasks *******
     desc("Check external dependency versions");
     task("check-version", function () {
