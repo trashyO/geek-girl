@@ -4,7 +4,7 @@
 (function () {
     "use strict";
 
-    var addition = require("../test/addition.js");
+    var addition = require("./../src/addition.js");
 
     describe("Addition", function(){
 

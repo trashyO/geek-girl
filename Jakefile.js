@@ -61,7 +61,7 @@
         process.stdout.write("Linting JavaScript: ");
 
         jshint.checkFiles({
-            files: ["Jakefile.js", "src/**/*.js"],
+            files: ["Jakefile.js", "src/**/*.js", "test/**/*.js"],
             options: lintOptions(),
             globals: {
                 desc, task
