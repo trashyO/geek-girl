@@ -9,3 +9,7 @@ node_modules/**/.bin
 
 # Karma binaries
 node_modules/karma/node_modules/chokidar/node_modules/fsevents/lib/
+
+# Build directory which is generated
+
+build

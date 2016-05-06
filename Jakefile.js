@@ -30,7 +30,7 @@
     desc("Run http server");
     task("run", function () {
         console.log("Running http-server: ");
-        jake.exec("node node_modules/http-server/bin/http-server src", {interactive: true}, complete);
+        jake.exec("node node_modules/http-server/bin/http-server build/dist", {interactive: true}, complete);
     });
 
     desc("Run Android emulator");
