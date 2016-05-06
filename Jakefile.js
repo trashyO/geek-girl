@@ -8,11 +8,19 @@
     let semver = require("semver");
     let jshint = require("simplebuild-jshint");
     let karma = require("simplebuild-karma");
+    let shell = require("shelljs");
 
     const EXPECTED_NODE_VERSION = packageJson.engines.node;
     const KARMA_CONF = "karma.conf.js";
 
     //******* Global Tasks *******
+
+    desc("Clean the build.");
+    task("clean", function() {
+        console.log("Removing build directory: .");
+        shell.rm("-rf", "build");
+    });
+
     desc("Start Karma");
     task("karma", function () {
         console.log("Starting karma: ");
@@ -26,6 +34,15 @@
         console.log("Running default: ");
         console.log("\n\nBUILD OK");
     });
+
+    desc("Create distribution");
+    task("build", ["clean", "build/dist"], function () {
+        console.log("Building project: .");
+
+        shell.cp("src/index.html", "build/dist");
+    });
+
+    directory("build/dist");
 
     desc("Run http server");
     task("run", function () {
