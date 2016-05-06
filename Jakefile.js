@@ -12,6 +12,7 @@
 
     const EXPECTED_NODE_VERSION = packageJson.engines.node;
     const KARMA_CONF = "karma.conf.js";
+    const DIST_DIR = "build/dist";
 
     //******* Global Tasks *******
 
@@ -23,7 +24,7 @@
 
     desc("Start Karma");
     task("karma", function () {
-        console.log("Starting karma: ");
+        console.log("Starting karma: .");
         karma.start({
             configFile: KARMA_CONF
         }, complete, fail);
@@ -31,35 +32,35 @@
 
     desc("Default build.");
     task("default", ["check-version", "lint", "test"], function () {
-        console.log("Running default: ");
+        console.log("Running default: .");
         console.log("\n\nBUILD OK");
     });
 
     desc("Create distribution");
-    task("build", ["clean", "build/dist"], function () {
-        console.log("Building project: .");
+    task("build", ["clean", DIST_DIR], function () {
+        console.log("Creating distribution: .");
 
-        shell.cp("src/index.html", "build/dist");
-        jake.exec("node node_modules/browserify/bin/cmd.js src/app.js -o build/dist/bundle.js", {interactive: true}, complete);
+        shell.cp("src/index.html", DIST_DIR);
+        jake.exec("node node_modules/browserify/bin/cmd.js src/app.js -o " + DIST_DIR + "/bundle.js", {interactive: true}, complete);
     });
 
     directory("build/dist");
 
     desc("Run http server");
-    task("run", function () {
-        console.log("Running http-server: ");
-        jake.exec("node node_modules/http-server/bin/http-server build/dist", {interactive: true}, complete);
+    task("run", ["build"], function () {
+        console.log("Running http-server: .");
+        jake.exec("node node_modules/http-server/bin/http-server " + DIST_DIR, {interactive: true}, complete);
     });
 
     desc("Run Android emulator");
     task("run-android-emulator", function () {
-        console.log("Running Android emulator: ");
+        console.log("Running Android emulator: .");
         jake.exec("/Users/tracey/Library/Android/sdk/tools/emulator -scale 0.25 -netdelay none -netspeed full -avd Nexus_5X_Edited_API_23", {interactive: true}, complete);
     });
 
     desc("Run iOS emulator");
     task("run-ios-emulator", function () {
-        console.log("Running iOS emulator: ");
+        console.log("Running iOS emulator: .");
         jake.exec("open -a Simulator", {interactive: true}, complete);
     });
 
@@ -76,7 +77,7 @@
 
     desc("Linting javascript");
     task("lint", function () {
-        process.stdout.write("Linting JavaScript: ");
+        process.stdout.write("Linting JavaScript: .");
 
         jshint.checkFiles({
             files: ["Jakefile.js", "src/**/*.js", "test/**/*.js"],
@@ -90,7 +91,7 @@
 
     desc("Run tests");
     task("test", function () {
-        console.log("Testing JavaScript: ");
+        console.log("Testing JavaScript: .");
         karma.run({
             configFile: KARMA_CONF,
             expectedBrowsers: [
