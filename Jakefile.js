@@ -1,5 +1,5 @@
 // Created by Tracey Oliver on 12/12/2015
-/* globals jake:false, desc:false, task:false, fail:false, complete:false  */
+/* globals jake:false, desc:false, task:false, fail:false, complete:false, directory:false  */
 
 (function () {
     "use strict";
@@ -16,7 +16,7 @@
 
     //******* Global Tasks *******
 
-    desc("Clean the build.");
+    desc("Clean the build");
     task("clean", function() {
         console.log("Removing build directory: .");
         shell.rm("-rf", "build");
@@ -30,7 +30,7 @@
         }, complete, fail);
     }, {async: true});
 
-    desc("Default build.");
+    desc("Default build");
     task("default", ["check-version", "lint", "test"], function () {
         console.log("Running default: .");
         console.log("\n\nBUILD OK");
