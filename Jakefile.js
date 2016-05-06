@@ -40,6 +40,7 @@
         console.log("Building project: .");
 
         shell.cp("src/index.html", "build/dist");
+        jake.exec("node node_modules/browserify/bin/cmd.js src/app.js -o build/dist/bundle.js", {interactive: true}, complete);
     });
 
     directory("build/dist");
