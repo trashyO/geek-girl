@@ -77,6 +77,14 @@
         });
 
         it("Remove class from an element with existing class", function() {
+            var element = createElement("div");
+            element.classList.add("existing hidden");
+
+            tabs.removeClass(element, "hidden");
+
+            assert.equal(element.className, "existing");
+
+            element.parentNode.removeChild(element);
 
         });
 
