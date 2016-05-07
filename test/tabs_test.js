@@ -51,7 +51,7 @@
 
             assert.equal(element.className, "hidden");
 
-            element.parentNode.removeChild(element);
+            tearDown([element]);
         });
 
         it("Apply class to element with existing class", function(){
@@ -62,7 +62,7 @@
 
             assert.equal(element.className, "existing hidden");
 
-            element.parentNode.removeChild(element);
+            tearDown([element]);
         });
 
         it("Remove class from an element with no existing class", function() {
@@ -72,7 +72,7 @@
 
             assert.equal(element.className, "");
 
-            element.parentNode.removeChild(element);
+            tearDown([element]);
         });
 
         it("Remove class from an element with existing class", function() {
@@ -84,8 +84,7 @@
 
             assert.equal(element.className, "existing");
 
-            element.parentNode.removeChild(element);
-
+            tearDown([element]);
         });
 
 
