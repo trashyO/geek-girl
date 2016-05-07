@@ -40,8 +40,8 @@
     task("build", ["clean", DIST_DIR], function () {
         console.log("Creating distribution: .");
 
-        shell.cp("src/index.html", DIST_DIR);
-        jake.exec("node node_modules/browserify/bin/cmd.js src/app.js -o " + DIST_DIR + "/bundle.js", {interactive: true}, complete);
+        shell.cp("src/content/*", DIST_DIR);
+        jake.exec("node node_modules/browserify/bin/cmd.js src/javascript/app.js -o " + DIST_DIR + "/bundle.js", {interactive: true}, complete);
     });
 
     directory("build/dist");
@@ -96,7 +96,9 @@
             configFile: KARMA_CONF,
             expectedBrowsers: [
                 "Chrome 50.0.2661 (Mac OS X 10.10.5)",
-                "Safari 8.0.8 (Mac OS X 10.10.5)"
+                "Safari 8.0.8 (Mac OS X 10.10.5)",
+                "Mobile Safari 9.0.0 (iOS 9.2.0)",
+                "Chrome Mobile 44.0.2403 (Android 6.0.0)"
             ],
             strict: !process.env.skipbrowsers
         }, complete, fail);

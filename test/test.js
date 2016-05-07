@@ -4,24 +4,28 @@
 (function () {
     "use strict";
 
-    var math = require("./../src/math.js");
     var assert = require("./assertions.js");
 
-    describe("Addition", function() {
+    describe("Playing with the DOM", function(){
 
-        it("add 2 numbers", function() {
-            assert.equal(math.add(3, 4), 7);
+        it("Creeat element and add to body", function(){
+
+         var div = document.createElement("div");
+
+        div.innerHTML = "Playing with the DOM example";
+
+        document.body.appendChild(div);
+
+        var p = document.createElement("p");
+
+        p.innerHTML = "Adding a paragraph to the DOM";
+
+        document.body.appendChild(p);
+
+        //div.remove();
+
         });
 
-        it("IEEE 754 floating point", function() {
-            assert.equal(math.add(0.1, 0.2), 0.30000000000000004);
-        });
-    });
-
-    describe("Subtraction", function() {
-        it("subtract 2 positive numbers", function(){
-            assert.equal(3, math.subtract(10, 7));
-        });
     });
 
 }());
