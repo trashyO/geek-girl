@@ -4,19 +4,8 @@
 (function () {
     "use strict";
 
-
-    exports.makeActive = function makeActive(tab) {
-        this.addClass(tab.contentElement, "hidden");
-        this.addClass(tab.tabElement, "active");
-    };
-
     exports.initialise = function initialise(tabElements) {
         this.swap(tabElements, 0);
-    };
-
-    exports.makeInactive = function makeInactive(tab) {
-        this.removeClass(tab.contentElement, "hidden");
-        this.removeClass(tab.tabElement, "active");
     };
 
     exports.swap = function swap(tabElements, index) {
@@ -33,6 +22,16 @@
         }
 
         this.makeActive(tabElements[index]);
+    };
+
+    exports.makeActive = function makeActive(tab) {
+        this.addClass(tab.contentElement, "hidden");
+        this.addClass(tab.tabElement, "active");
+    };
+
+    exports.makeInactive = function makeInactive(tab) {
+        this.removeClass(tab.contentElement, "hidden");
+        this.removeClass(tab.tabElement, "active");
     };
 
     exports.addClass = function addClass(element, classToAdd) {

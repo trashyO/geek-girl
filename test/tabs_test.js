@@ -13,8 +13,8 @@
     describe("Tabs", function(){
 
         it("Hide content element and add active class", function() {
-            var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
-            var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
+            var tab1 = createTab();
+            var tab2 = createTab();
 
             var tabElements = [tab1, tab2];
 
@@ -23,12 +23,12 @@
             assert.equal(tab1.contentElement.className, "hidden");
             assert.equal(tab1.tabElement.className, "active");
 
-            tearDown(tab1.contentElement, tab1.tabElement);
+            tearDown([tab1.contentElement, tab1.tabElement]);
         });
 
         it("Switch tabs should change active tab and hidden content", function() {
-            var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
-            var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
+            var tab1 = createTab();
+            var tab2 = createTab();
 
             var tabElements = [tab1, tab2];
 
@@ -45,8 +45,8 @@
         });
 
         it("Reference to tab outside range is invalid", function() {
-            var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
-            var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
+            var tab1 = createTab();
+            var tab2 = createTab();
 
             var tabElements = [tab1, tab2];
 
@@ -75,9 +75,9 @@
         });
 
         it("Multiple tabs are active should reset all of them", function() {
-            var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
-            var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
-            var tab3 = {contentElement: createElement("div"), tabElement: createElement("a")};
+            var tab1 = createTab();
+            var tab2 = createTab();
+            var tab3 = createTab();
 
             var tabElements = [tab1, tab2, tab3];
 
@@ -98,8 +98,8 @@
         });
 
         it("Initialise resets any already active tabs", function() {
-            var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
-            var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
+            var tab1 = createTab();
+            var tab2 = createTab();
 
             var tabElements = [tab1, tab2];
 
@@ -160,6 +160,10 @@
             tearDown([element]);
         });
 
+        
+        function createTab() {
+            return {contentElement: createElement("div"), tabElement: createElement("a")};
+        }
 
         function createElement(tagName) {
             var element = document.createElement(tagName);
