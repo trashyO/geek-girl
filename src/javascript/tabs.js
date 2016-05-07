@@ -10,4 +10,12 @@
 
     };
 
+    exports.addClass = function addClass(element, newClass) {
+        if (element.getAttribute("class") !== null) {
+            newClass = element.getAttribute("class") + " " + newClass;
+        }
+
+        element.setAttribute("class", newClass);
+    };
+
 }());

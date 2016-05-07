@@ -12,7 +12,6 @@
      */
     describe("Tabs", function(){
 
-
         it("Hide content element and add active class", function() {
             var contentElement = createElement("div");
             var activeElement = createElement("a");
@@ -24,6 +23,29 @@
 
             tearDown(contentElement, activeElement);
         });
+
+
+        it("Apply class to element with no existing class", function(){
+            var element = createElement("div");
+
+            tabs.addClass(element, "hidden");
+
+            assert.equal(element.className, "hidden");
+
+            element.parentNode.removeChild(element);
+        });
+
+        it("Apply class to element with existing class", function(){
+            var element = createElement("div");
+            element.className = "existing";
+
+            tabs.addClass(element, "hidden");
+
+            assert.equal(element.className, "existing hidden");
+
+            element.parentNode.removeChild(element);
+        });
+
 
         function createElement(tagName) {
             var element = document.createElement(tagName);
