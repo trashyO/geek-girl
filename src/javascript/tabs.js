@@ -4,8 +4,10 @@
 (function () {
     "use strict";
 
-    exports.initialise = function initialise(element) {
-        element.style.display = "None";
+    exports.initialise = function initialise(contentElement, activeElement) {
+        contentElement.style.display = "None";
+        activeElement.className = "active";
+
     };
 
 }());
