@@ -12,6 +12,7 @@
      */
     describe("Tabs", function(){
 
+
         it("Hide content element and add active class", function() {
             var contentElement = createElement("div");
             var activeElement = createElement("a");
@@ -21,15 +22,18 @@
             assert.equal(getComputedStyle(contentElement).display, "none");
             assert.equal(activeElement.className, "active");
 
-            // Clean up
-            contentElement.parentNode.removeChild(contentElement);
-            activeElement.parentNode.removeChild(activeElement);
+            tearDown(contentElement, activeElement);
         });
 
         function createElement(tagName) {
             var element = document.createElement(tagName);
             document.body.appendChild(element);
             return element;
+        }
+
+        function tearDown(contentElement, activeElement) {
+            contentElement.parentNode.removeChild(contentElement);
+            activeElement.parentNode.removeChild(activeElement);
         }
 
     });

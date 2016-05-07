@@ -98,7 +98,8 @@
                 "Chrome 50.0.2661 (Mac OS X 10.10.5)",
                 "Safari 8.0.8 (Mac OS X 10.10.5)",
                 "Mobile Safari 9.0.0 (iOS 9.2.0)",
-                "IE 11.0.0 (Windows 7 0.0.0)"
+                "IE 11.0.0 (Windows 7 0.0.0)",
+                "Firefox 46.0.0 (Mac OS X 10.10.0)"
             ],
             strict: !process.env.skipbrowsers
         }, complete, fail);
