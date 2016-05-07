@@ -42,14 +42,14 @@
             assertTabIsInactive(tab2);
         });
 
-        it("Switch tabs should change active tab to specified index", function() {
+        it("Click on tab 2 should switch tabs and should change active tab to tab 2", function() {
             var tab1 = createTab();
             var tab2 = createTab();
 
             var tabElements = [tab1, tab2];
             tabs.initialise(tabElements);
 
-            tabs.swap(tabElements, 1);
+            tab2.tabElement.click();
 
             assertTabIsInactive(tab1);
             assertTabIsActive(tab2);
@@ -92,10 +92,12 @@
 
             var tabElements = [tab1, tab2, tab3];
 
+            tabs.initialise(tabElements);
+
             tabs.makeActive(tab1);
             tabs.makeActive(tab2);
 
-            tabs.swap(tabElements, 2);
+            tab3.tabElement.click();
 
             assertTabIsInactive(tab1);
             assertTabIsInactive(tab2);

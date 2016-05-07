@@ -5,7 +5,18 @@
     "use strict";
 
     exports.initialise = function initialise(tabElements) {
+        for(var i = 0; i < tabElements.length; i++) {
+            var tab = tabElements[i];
+            tab.tabElement.addEventListener("click", this.clickHandler(tabElements, i).bind(this));
+        }
+
         this.swap(tabElements, 0);
+    };
+
+    exports.clickHandler = function clickHandler(tabElements, i) {
+        return function(){
+            this.swap(tabElements, i);
+        };
     };
 
     exports.swap = function swap(tabElements, index) {
