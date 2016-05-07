@@ -14,6 +14,11 @@
         this.makeActive(tabElements[0]);
     };
 
+    exports.makeInactive = function makeInactive(tab) {
+        this.removeClass(tab.contentElement, "hidden");
+        this.removeClass(tab.tabElement, "active");
+    };
+
     exports.swap = function swap(tabElements, index) {
         if (tabElements === null || tabElements.length === 0) {
             throw "tabElements can't be null or empty";
@@ -23,10 +28,11 @@
             throw "index can't reference value greater than tabElements.length-1. Maximum index is: " + (tabElements.length - 1);
         }
 
-        this.makeActive(tabElements[index]);
+        for (var i = 0; i < tabElements.length; i++) {
+            this.makeInactive(tabElements[i]);
+        }
 
-        this.removeClass(tabElements[0].contentElement, "hidden");
-        this.removeClass(tabElements[0].tabElement, "active");
+        this.makeActive(tabElements[index]);
     };
 
     exports.addClass = function addClass(element, classToAdd) {

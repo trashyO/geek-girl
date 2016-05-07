@@ -75,6 +75,25 @@
         });
 
         it("Multiple tabs are active should reset all of them", function() {
+            var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
+            var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
+            var tab3 = {contentElement: createElement("div"), tabElement: createElement("a")};
+
+            var tabElements = [tab1, tab2, tab3];
+
+            tabs.makeActive(tab1);
+            tabs.makeActive(tab2);
+
+            tabs.swap(tabElements, 2);
+
+            assert.equal(tab1.contentElement.className, "");
+            assert.equal(tab1.tabElement.className, "");
+            assert.equal(tab2.contentElement.className, "");
+            assert.equal(tab2.tabElement.className, "");
+            assert.equal(tab3.contentElement.className, "hidden");
+            assert.equal(tab3.tabElement.className, "active");
+
+            tearDown([tab1.contentElement, tab1.tabElement, tab2.contentElement, tab2.tabElement, tab3.contentElement, tab3.tabElement]);
 
         });
 
