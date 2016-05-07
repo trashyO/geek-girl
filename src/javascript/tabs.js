@@ -5,9 +5,8 @@
     "use strict";
 
     exports.initialise = function initialise(contentElement, activeElement) {
-        contentElement.style.display = "None";
-        activeElement.className = "active";
-
+        this.addClass(contentElement, "hidden");
+        this.addClass(activeElement, "active");
     };
 
     exports.addClass = function addClass(element, newClass) {

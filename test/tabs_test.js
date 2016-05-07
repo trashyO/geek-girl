@@ -18,7 +18,7 @@
 
             tabs.initialise(contentElement, activeElement);
 
-            assert.equal(getComputedStyle(contentElement).display, "none");
+            assert.equal(contentElement.className, "hidden");
             assert.equal(activeElement.className, "active");
 
             tearDown(contentElement, activeElement);
