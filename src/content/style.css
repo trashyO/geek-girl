@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+.hidden {
+    display: none;
+}
+
 .tabs {
     width: 100%;
     height: 30px;
