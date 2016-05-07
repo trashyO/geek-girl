@@ -42,9 +42,18 @@
             tearDown([tab1.contentElement, tab1.tabElement, tab2.contentElement, tab2.tabElement]);
         });
 
-        it("Swap tabs are null or empty", function(){
+        it("Swap tabs are empty", function(){
             try {
                 tabs.swap([], 1);
+            } catch (err) {
+                assert.equal(err.message, "tabElements can't be null or empty");
+            }
+
+        });
+
+        it("Swap tabs are null", function(){
+            try {
+                tabs.swap(null, 1);
             } catch (err) {
                 assert.equal(err.message, "tabElements can't be null or empty");
             }

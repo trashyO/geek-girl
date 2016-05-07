@@ -15,7 +15,7 @@
     };
 
     exports.swap = function swap(tabElements, index) {
-        if (tabElements.length === 0) {
+        if (tabElements === null || tabElements.length === 0) {
             throw new Error("tabElements can't be null or empty");
         }
         this.makeActive(tabElements[index]);
