@@ -40,8 +40,7 @@
             assert.equal(contentElementTab2.className, "hidden");
             assert.equal(activeElementTab2.className, "active");
 
-            tearDown(hiddenContent, activeTab);
-            tearDown(contentElementTab2, activeElementTab2);
+            tearDown([hiddenContent, activeTab, contentElementTab2, activeElementTab2]);
         });
 
 
@@ -96,9 +95,10 @@
             return element;
         }
 
-        function tearDown(contentElement, activeElement) {
-            contentElement.parentNode.removeChild(contentElement);
-            activeElement.parentNode.removeChild(activeElement);
+        function tearDown(elements) {
+            for(var i = 0; i < elements.length; i++) {
+                elements[i].parentNode.removeChild(elements[i]);
+            }
         }
 
     });
