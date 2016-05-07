@@ -6,6 +6,7 @@
 
     var assert = require("./assertions.js");
     var tabs = require("./../src/javascript/tabs.js");
+    var tab = require("./../src/javascript/tab.js");
 
     /*
     TODO:
@@ -13,34 +14,36 @@
     describe("Tabs", function(){
 
         it("Hide content element and add active class", function() {
-            var contentElement = createElement("div");
-            var activeElement = createElement("a");
 
-            tabs.initialise(contentElement, activeElement);
+            var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
+            var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
 
-            assert.equal(contentElement.className, "hidden");
-            assert.equal(activeElement.className, "active");
+            var tabElements = [tab1, tab2];
 
-            tearDown(contentElement, activeElement);
+            tabs.initialise(tabElements);
+
+            assert.equal(tab1.contentElement.className, "hidden");
+            assert.equal(tab1.tabElement.className, "active");
+
+            tearDown(tab1.contentElement, tab1.tabElement);
         });
 
         it("Switch tabs should change active tab and hidden content", function() {
-            var hiddenContent = createElement("div");
-            var activeTab = createElement("a");
+            var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
 
-            tabs.initialise(hiddenContent, activeTab);
+            tabs.initialise([tab1]);
 
             var contentElementTab2 = createElement("div");
             var activeElementTab2 = createElement("a");
 
-            tabs.swap(hiddenContent, activeTab, contentElementTab2, activeElementTab2);
+            tabs.swap(tab1.contentElement, tab1.tabElement, contentElementTab2, activeElementTab2);
 
-            assert.equal(hiddenContent.className, "");
-            assert.equal(activeTab.className, "");
+            assert.equal(tab1.contentElement.className, "");
+            assert.equal(tab1.tabElement.className, "");
             assert.equal(contentElementTab2.className, "hidden");
             assert.equal(activeElementTab2.className, "active");
 
-            tearDown([hiddenContent, activeTab, contentElementTab2, activeElementTab2]);
+            tearDown([tab1.contentElement, tab1.tabElement, contentElementTab2, activeElementTab2]);
         });
 
 

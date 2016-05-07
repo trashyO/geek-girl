@@ -5,13 +5,16 @@
     "use strict";
 
 
-    exports.initialise = function initialise(contentElement, activeElement) {
-        this.addClass(contentElement, "hidden");
-        this.addClass(activeElement, "active");
+    exports.initialise = function initialise(tabElements) {
+        var content = tabElements[0].contentElement;
+        var tab = tabElements[0].tabElement;
+
+        this.addClass(content, "hidden");
+        this.addClass(tab, "active");
     };
 
     exports.swap = function swap(hiddenContent, activeTab, contentElement, activeElement) {
-        this.initialise(contentElement, activeElement);
+        this.initialise([{contentElement: contentElement, tabElement: activeElement}]);
 
         this.removeClass(hiddenContent, "hidden");
         this.removeClass(activeTab, "active");
