@@ -24,25 +24,25 @@
             tearDown(contentElement, activeElement);
         });
 
-        //it("Switch tabs should change active tab and hidden content", function() {
-        //    var contentElementTab1 = createElement("div");
-        //    var activeElementTab1 = createElement("a");
-        //
-        //    tabs.initialise(contentElementTab1, activeElementTab1);
-        //
-        //    var contentElementTab2 = createElement("div");
-        //    var activeElementTab2 = createElement("a");
-        //
-        //    tabs.swap(contentElementTab2, activeElementTab2);
-        //
-        //    assert.equal(contentElementTab1.className, "");
-        //    assert.equal(activeElementTab1.className, "");
-        //    assert.equal(contentElementTab2.className, "hidden");
-        //    assert.equal(activeElementTab2.className, "active");
-        //
-        //    tearDown(contentElementTab1, activeElementTab1);
-        //    tearDown(contentElementTab2, activeElementTab2);
-        //});
+        it("Switch tabs should change active tab and hidden content", function() {
+            var hiddenContent = createElement("div");
+            var activeTab = createElement("a");
+
+            tabs.initialise(hiddenContent, activeTab);
+
+            var contentElementTab2 = createElement("div");
+            var activeElementTab2 = createElement("a");
+
+            tabs.swap(hiddenContent, activeTab, contentElementTab2, activeElementTab2);
+
+            assert.equal(hiddenContent.className, "");
+            assert.equal(activeTab.className, "");
+            assert.equal(contentElementTab2.className, "hidden");
+            assert.equal(activeElementTab2.className, "active");
+
+            tearDown(hiddenContent, activeTab);
+            tearDown(contentElementTab2, activeElementTab2);
+        });
 
 
         it("Apply class to element with no existing class", function(){

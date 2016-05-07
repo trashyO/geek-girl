@@ -4,23 +4,21 @@
 (function () {
     "use strict";
 
-    var contentElementTab1;
-    var activeElementTab1;
 
     exports.initialise = function initialise(contentElement, activeElement) {
         this.addClass(contentElement, "hidden");
         this.addClass(activeElement, "active");
-
-        contentElementTab1 = contentElement;
-        activeElementTab1 = activeElement;
     };
 
-    exports.swap = function swap(contentElement, activeElement) {
+    exports.swap = function swap(hiddenContent, activeTab, contentElement, activeElement) {
         this.initialise(contentElement, activeElement);
+
+        this.removeClass(hiddenContent, "hidden");
+        this.removeClass(activeTab, "active");
     };
 
-    exports.addClass = function addClass(element, newClass) {
-        element.classList.add(newClass);
+    exports.addClass = function addClass(element, classToAdd) {
+        element.classList.add(classToAdd);
     };
 
     exports.removeClass = function removeClass(element, classToRemove) {
