@@ -29,7 +29,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'test/**/*.js': ['commonjs'],
-      'src/**/*.js': ['commonjs']
+      'src/**/*.js': ['commonjs'],
     },
 
 
