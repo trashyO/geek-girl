@@ -1,5 +1,5 @@
 // Created by Tracey Oliver on 12/12/2015
-/* globals jake:false, desc:false, task:false, fail:false, complete:false, directory:false  */
+/* globals jake:false, desc:false, task:false, fail:false, complete:false, directory:false */
 
 (function () {
     "use strict";

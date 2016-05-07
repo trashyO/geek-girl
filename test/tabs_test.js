@@ -1,5 +1,5 @@
 //Created by tracey on 12/12/2015.
-/* globals describe:false, it:false  */
+/* globals describe:false, it:false, beforeEach:false, afterEach:false  */
 
 (function () {
     "use strict";
@@ -9,8 +9,26 @@
 
     /*
     TODO:
+
+    Refactor to use beforeEach and AfterEach
+
+    Learn markdown for todos
+
+    Implement chai for assertions
      */
     describe("Tabs", function(){
+
+        var container;
+
+        beforeEach(function() {
+            container = document.createElement("div");
+            document.body.appendChild(container);
+        });
+
+        afterEach(function() {
+            container.parentNode.removeChild(container);
+        });
+
 
         it("Hide content element and add active class", function() {
             var tab1 = createTab();
@@ -22,8 +40,6 @@
 
             assert.equal(tab1.contentElement.className, "hidden");
             assert.equal(tab1.tabElement.className, "active");
-
-            tearDown([tab1.contentElement, tab1.tabElement]);
         });
 
         it("Switch tabs should change active tab and hidden content", function() {
@@ -40,8 +56,6 @@
             assert.equal(tab1.tabElement.className, "");
             assert.equal(tab2.contentElement.className, "hidden");
             assert.equal(tab2.tabElement.className, "active");
-
-            tearDown([tab1.contentElement, tab1.tabElement, tab2.contentElement, tab2.tabElement]);
         });
 
         it("Reference to tab outside range is invalid", function() {
@@ -92,9 +106,6 @@
             assert.equal(tab2.tabElement.className, "");
             assert.equal(tab3.contentElement.className, "hidden");
             assert.equal(tab3.tabElement.className, "active");
-
-            tearDown([tab1.contentElement, tab1.tabElement, tab2.contentElement, tab2.tabElement, tab3.contentElement, tab3.tabElement]);
-
         });
 
         it("Initialise resets any already active tabs", function() {
@@ -112,9 +123,6 @@
             assert.equal(tab1.tabElement.className, "active");
             assert.equal(tab2.contentElement.className, "");
             assert.equal(tab2.tabElement.className, "");
-
-            tearDown([tab1.contentElement, tab1.tabElement, tab2.contentElement, tab2.tabElement]);
-
         });
 
         it("Apply class to element with no existing class", function(){
@@ -123,8 +131,6 @@
             tabs.addClass(element, "hidden");
 
             assert.equal(element.className, "hidden");
-
-            tearDown([element]);
         });
 
         it("Apply class to element with existing class", function(){
@@ -134,8 +140,6 @@
             tabs.addClass(element, "hidden");
 
             assert.equal(element.className, "existing hidden");
-
-            tearDown([element]);
         });
 
         it("Remove class from an element with no existing class", function() {
@@ -144,8 +148,6 @@
            tabs.removeClass(element, "hidden");
 
             assert.equal(element.className, "");
-
-            tearDown([element]);
         });
 
         it("Remove class from an element with existing class", function() {
@@ -156,25 +158,17 @@
             tabs.removeClass(element, "hidden");
 
             assert.equal(element.className, "existing");
-
-            tearDown([element]);
         });
 
-        
+
         function createTab() {
             return {contentElement: createElement("div"), tabElement: createElement("a")};
         }
 
         function createElement(tagName) {
             var element = document.createElement(tagName);
-            document.body.appendChild(element);
+            container.appendChild(element);
             return element;
-        }
-
-        function tearDown(elements) {
-            for(var i = 0; i < elements.length; i++) {
-                elements[i].parentNode.removeChild(elements[i]);
-            }
         }
 
     });
