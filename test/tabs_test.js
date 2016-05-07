@@ -78,7 +78,8 @@
 
         it("Remove class from an element with existing class", function() {
             var element = createElement("div");
-            element.classList.add("existing hidden");
+            element.classList.add("existing");
+            element.classList.add("hidden");
 
             tabs.removeClass(element, "hidden");
 
