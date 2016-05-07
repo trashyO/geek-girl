@@ -30,9 +30,11 @@
             var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
             var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
 
-            tabs.initialise([tab1, tab2]);
+            var tabElements = [tab1, tab2];
 
-            tabs.swap([tab1, tab2], 1);
+            tabs.initialise(tabElements);
+
+            tabs.swap(tabElements, 1);
 
             assert.equal(tab1.contentElement.className, "");
             assert.equal(tab1.tabElement.className, "");
@@ -42,25 +44,33 @@
             tearDown([tab1.contentElement, tab1.tabElement, tab2.contentElement, tab2.tabElement]);
         });
 
+        it("Reference to tab outside range is invalid", function() {
+            var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
+            var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
+
+            var tabElements = [tab1, tab2];
+
+            try {
+                tabs.swap(tabElements, 2);
+            } catch (err) {
+                assert.equal(err, "index can't reference value greater than tabElements.length-1. Maximum index is: 1");
+            }
+        });
+
         it("Swap tabs are empty", function(){
             try {
                 tabs.swap([], 1);
             } catch (err) {
-                assert.equal(err.message, "tabElements can't be null or empty");
+                assert.equal(err, "tabElements can't be null or empty");
             }
-
         });
 
         it("Swap tabs are null", function(){
             try {
                 tabs.swap(null, 1);
             } catch (err) {
-                assert.equal(err.message, "tabElements can't be null or empty");
+                assert.equal(err, "tabElements can't be null or empty");
             }
-
-        });
-
-        it("Reference to active tab is invalid", function() {
 
         });
 
