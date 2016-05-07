@@ -13,6 +13,8 @@
     Learn markdown for todos
 
     Implement chai for assertions
+
+    Pass in the class for active and hidden styles
      */
     describe("Tabs", function(){
 
@@ -115,7 +117,7 @@
             assertTabIsInactive(tab2);
         });
 
-        it("Make tab active removes hidden element from content and adds active class to tab", function(){
+        it("Make active removes hidden element from content and adds active class to tab", function(){
             var tab1 = createTab();
 
             tabs.addClass(tab1.contentElement, "hidden");
@@ -125,24 +127,26 @@
             assertTabIsActive(tab1);
         });
 
-        it.skip("Apply class to element with existing class", function(){
-            var element = createElement("div");
-            element.className = "existing";
+        it("Make inactive adds hidden element to content and removes active class from tab", function(){
+            var tab1 = createTab();
 
+            tabs.addClass(tab1.tabElement, "active");
+
+            tabs.makeInactive(tab1);
+
+            assertTabIsInactive(tab1);
+        });
+
+        it("Add class from an element with existing class", function() {
+           var element = createElement("div");
+
+            element.classList.add("existing");
             tabs.addClass(element, "hidden");
 
             assert.equal(element.className, "existing hidden");
         });
 
-        it.skip("Remove class from an element with no existing class", function() {
-           var element = createElement("div");
-
-           tabs.removeClass(element, "hidden");
-
-            assert.equal(element.className, "");
-        });
-
-        it.skip("Remove class from an element with existing class", function() {
+        it("Remove class from an element with existing class", function() {
             var element = createElement("div");
             element.classList.add("existing");
             element.classList.add("hidden");
