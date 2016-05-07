@@ -24,6 +24,26 @@
             tearDown(contentElement, activeElement);
         });
 
+        //it("Switch tabs should change active tab and hidden content", function() {
+        //    var contentElementTab1 = createElement("div");
+        //    var activeElementTab1 = createElement("a");
+        //
+        //    tabs.initialise(contentElementTab1, activeElementTab1);
+        //
+        //    var contentElementTab2 = createElement("div");
+        //    var activeElementTab2 = createElement("a");
+        //
+        //    tabs.swap(contentElementTab2, activeElementTab2);
+        //
+        //    assert.equal(contentElementTab1.className, "");
+        //    assert.equal(activeElementTab1.className, "");
+        //    assert.equal(contentElementTab2.className, "hidden");
+        //    assert.equal(activeElementTab2.className, "active");
+        //
+        //    tearDown(contentElementTab1, activeElementTab1);
+        //    tearDown(contentElementTab2, activeElementTab2);
+        //});
+
 
         it("Apply class to element with no existing class", function(){
             var element = createElement("div");
@@ -44,6 +64,20 @@
             assert.equal(element.className, "existing hidden");
 
             element.parentNode.removeChild(element);
+        });
+
+        it("Remove class from an element with no existing class", function() {
+           var element = createElement("div");
+
+           tabs.removeClass(element, "hidden");
+
+            assert.equal(element.className, "");
+
+            element.parentNode.removeChild(element);
+        });
+
+        it("Remove class from an element with existing class", function() {
+
         });
 
 
