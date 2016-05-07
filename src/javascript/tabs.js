@@ -20,11 +20,12 @@
     };
 
     exports.addClass = function addClass(element, newClass) {
-        if (element.getAttribute("class") !== null) {
-            newClass = element.getAttribute("class") + " " + newClass;
-        }
-
-        element.setAttribute("class", newClass);
+        element.classList.add(newClass);
+        //if (element.getAttribute("class") !== null) {
+        //    newClass = element.getAttribute("class") + " " + newClass;
+        //}
+        //
+        //element.setAttribute("class", newClass);
     };
 
     exports.removeClass = function removeClass(element, classToRemove) {
