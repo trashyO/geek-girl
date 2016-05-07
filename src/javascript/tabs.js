@@ -10,11 +10,11 @@
 
     exports.swap = function swap(tabElements, index) {
         if (tabElements === null || tabElements.length === 0) {
-            throw "tabElements can't be null or empty";
+            throw (new Error("tabElements can't be null or empty"));
         }
 
         if(index >= tabElements.length) {
-            throw "index can't reference value greater than tabElements.length-1. Maximum index is: " + (tabElements.length - 1);
+            throw (new Error("index can't reference value greater than tabElements.length-1. Maximum index is: " + (tabElements.length - 1)));
         }
 
         for (var i = 0; i < tabElements.length; i++) {

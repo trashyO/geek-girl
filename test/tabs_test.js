@@ -65,14 +65,14 @@
             try {
                 tabs.swap(tabElements, 2);
             } catch (err) {
-                assert.equal(err, "index can't reference value greater than tabElements.length-1. Maximum index is: 1");
+                assert.equal(err.message, "index can't reference value greater than tabElements.length-1. Maximum index is: 1");
             }
         });
         it("Swap tabs are empty", function(){
             try {
                 tabs.swap([], 1);
             } catch (err) {
-                assert.equal(err, "tabElements can't be null or empty");
+                assert.equal(err.message, "tabElements can't be null or empty");
             }
         });
 
@@ -80,7 +80,7 @@
             try {
                 tabs.swap(null, 1);
             } catch (err) {
-                assert.equal(err, "tabElements can't be null or empty");
+                assert.equal(err.message, "tabElements can't be null or empty");
             }
 
         });
@@ -164,7 +164,6 @@
             assert.equal(tab.contentElement.className, "hidden");
             assert.equal(tab.tabElement.className, "");
         }
-
 
         function assertTabIsActive(tab) {
             assert.equal(tab.contentElement.className, "");
