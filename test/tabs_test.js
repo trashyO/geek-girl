@@ -6,7 +6,6 @@
 
     var assert = require("./assertions.js");
     var tabs = require("./../src/javascript/tabs.js");
-    var tab = require("./../src/javascript/tab.js");
 
     /*
     TODO:
@@ -14,7 +13,6 @@
     describe("Tabs", function(){
 
         it("Hide content element and add active class", function() {
-
             var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
             var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
 
@@ -30,20 +28,18 @@
 
         it("Switch tabs should change active tab and hidden content", function() {
             var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
+            var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
 
-            tabs.initialise([tab1]);
+            tabs.initialise([tab1, tab2]);
 
-            var contentElementTab2 = createElement("div");
-            var activeElementTab2 = createElement("a");
-
-            tabs.swap(tab1.contentElement, tab1.tabElement, contentElementTab2, activeElementTab2);
+            tabs.swap([tab1, tab2], 1);
 
             assert.equal(tab1.contentElement.className, "");
             assert.equal(tab1.tabElement.className, "");
-            assert.equal(contentElementTab2.className, "hidden");
-            assert.equal(activeElementTab2.className, "active");
+            assert.equal(tab2.contentElement.className, "hidden");
+            assert.equal(tab2.tabElement.className, "active");
 
-            tearDown([tab1.contentElement, tab1.tabElement, contentElementTab2, activeElementTab2]);
+            tearDown([tab1.contentElement, tab1.tabElement, tab2.contentElement, tab2.tabElement]);
         });
 
 
