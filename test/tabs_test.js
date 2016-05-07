@@ -46,7 +46,7 @@
             try {
                 tabs.swap([], 1);
             } catch (err) {
-                assert.equal(e.message, "Tabs can't be null or empty");
+                assert.equal(err.message, "tabElements can't be null or empty");
             }
 
         });
