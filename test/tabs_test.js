@@ -9,8 +9,16 @@
 
     describe("Tabs", function(){
 
-        it("Has tabs module", function() {
+        it("Hide an element", function() {
 
+            var element = document.createElement("div");
+            document.body.appendChild(element);
+
+            tabs.initialise(element);
+
+            var display = getComputedStyle(element).display;
+            console.log(display);
+            assert.equal(display, "none");
 
         //var div = document.createElement("div");
         //div.innerHTML = "Playing with the DOM example";

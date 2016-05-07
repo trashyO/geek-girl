@@ -3,4 +3,9 @@
 
 (function () {
     "use strict";
+
+    exports.initialise = function initialise(element) {
+        element.style.display = "None";
+    };
+
 }());
