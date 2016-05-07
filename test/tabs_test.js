@@ -9,39 +9,28 @@
 
     /*
     TODO:
-    1. Hide element when tab selected
-    2. Add style when tab selected
      */
     describe("Tabs", function(){
 
         it("Hide content element and add active class", function() {
-
-            var contentElement = document.createElement("div");
-            var activeElement = document.createElement("a");
-
-            document.body.appendChild(contentElement);
-            document.body.appendChild(activeElement);
+            var contentElement = createElement("div");
+            var activeElement = createElement("a");
 
             tabs.initialise(contentElement, activeElement);
 
-            var display = getComputedStyle(contentElement).display;
-            var activeClass = activeElement.className;
-
-            console.log(display);
-            console.log(activeClass);
-            assert.equal(display, "none");
-            assert.equal(activeClass, "active");
+            assert.equal(getComputedStyle(contentElement).display, "none");
+            assert.equal(activeElement.className, "active");
 
             // Clean up
             contentElement.parentNode.removeChild(contentElement);
             activeElement.parentNode.removeChild(activeElement);
-
-        //var div = document.createElement("div");
-        //div.innerHTML = "Playing with the DOM example";
-        //document.body.appendChild(div);
-        //div.parentNode.removeChild(div);
         });
 
+        function createElement(tagName) {
+            var element = document.createElement(tagName);
+            document.body.appendChild(element);
+            return element;
+        }
 
     });
 
