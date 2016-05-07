@@ -97,7 +97,23 @@
 
         });
 
-        it("Active tab is already ative", function() {
+        it("Initialise resets any already active tabs", function() {
+            var tab1 = {contentElement: createElement("div"), tabElement: createElement("a")};
+            var tab2 = {contentElement: createElement("div"), tabElement: createElement("a")};
+
+            var tabElements = [tab1, tab2];
+
+            tabs.makeActive(tab1);
+            tabs.makeActive(tab2);
+
+            tabs.initialise(tabElements);
+
+            assert.equal(tab1.contentElement.className, "hidden");
+            assert.equal(tab1.tabElement.className, "active");
+            assert.equal(tab2.contentElement.className, "");
+            assert.equal(tab2.tabElement.className, "");
+
+            tearDown([tab1.contentElement, tab1.tabElement, tab2.contentElement, tab2.tabElement]);
 
         });
 

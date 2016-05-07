@@ -11,7 +11,7 @@
     };
 
     exports.initialise = function initialise(tabElements) {
-        this.makeActive(tabElements[0]);
+        this.swap(tabElements, 0);
     };
 
     exports.makeInactive = function makeInactive(tab) {
