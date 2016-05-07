@@ -25,12 +25,12 @@
     };
 
     exports.makeActive = function makeActive(tab) {
-        this.addClass(tab.contentElement, "hidden");
+        this.removeClass(tab.contentElement, "hidden");
         this.addClass(tab.tabElement, "active");
     };
 
     exports.makeInactive = function makeInactive(tab) {
-        this.removeClass(tab.contentElement, "hidden");
+        this.addClass(tab.contentElement, "hidden");
         this.removeClass(tab.tabElement, "active");
     };
 

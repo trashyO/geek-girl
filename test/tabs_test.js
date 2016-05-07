@@ -28,7 +28,7 @@
         });
 
 
-        it("Hide content element and add active class", function() {
+        it("Initialise should hide content element and add active class for default tab 0", function() {
             var tab1 = createTab();
             var tab2 = createTab();
 
@@ -37,9 +37,10 @@
             tabs.initialise(tabElements);
 
             assertTabIsActive(tab1);
+            assertTabIsInactive(tab2);
         });
 
-        it("Switch tabs should change active tab and hidden content", function() {
+        it("Switch tabs should change active tab to specified index", function() {
             var tab1 = createTab();
             var tab2 = createTab();
 
@@ -82,7 +83,7 @@
 
         });
 
-        it("Multiple tabs are active should reset all of them", function() {
+        it("Swap should reset all active tabs", function() {
             var tab1 = createTab();
             var tab2 = createTab();
             var tab3 = createTab();
@@ -99,7 +100,7 @@
             assertTabIsActive(tab3);
         });
 
-        it("Initialise resets any already active tabs", function() {
+        it("Initialise should reset all active tabs", function() {
             var tab1 = createTab();
             var tab2 = createTab();
 
@@ -114,15 +115,17 @@
             assertTabIsInactive(tab2);
         });
 
-        it("Apply class to element with no existing class", function(){
-            var element = createElement("div");
+        it("Make tab active removes hidden element from content and adds active class to tab", function(){
+            var tab1 = createTab();
 
-            tabs.addClass(element, "hidden");
+            tabs.addClass(tab1.contentElement, "hidden");
 
-            assert.equal(element.className, "hidden");
+            tabs.makeActive(tab1);
+
+            assertTabIsActive(tab1);
         });
 
-        it("Apply class to element with existing class", function(){
+        it.skip("Apply class to element with existing class", function(){
             var element = createElement("div");
             element.className = "existing";
 
@@ -131,7 +134,7 @@
             assert.equal(element.className, "existing hidden");
         });
 
-        it("Remove class from an element with no existing class", function() {
+        it.skip("Remove class from an element with no existing class", function() {
            var element = createElement("div");
 
            tabs.removeClass(element, "hidden");
@@ -139,7 +142,7 @@
             assert.equal(element.className, "");
         });
 
-        it("Remove class from an element with existing class", function() {
+        it.skip("Remove class from an element with existing class", function() {
             var element = createElement("div");
             element.classList.add("existing");
             element.classList.add("hidden");
@@ -154,13 +157,13 @@
         }
 
         function assertTabIsInactive(tab) {
-            assert.equal(tab.contentElement.className, "");
+            assert.equal(tab.contentElement.className, "hidden");
             assert.equal(tab.tabElement.className, "");
         }
 
 
         function assertTabIsActive(tab) {
-            assert.equal(tab.contentElement.className, "hidden");
+            assert.equal(tab.contentElement.className, "");
             assert.equal(tab.tabElement.className, "active");
         }
 
