@@ -42,6 +42,26 @@
             tearDown([tab1.contentElement, tab1.tabElement, tab2.contentElement, tab2.tabElement]);
         });
 
+        it("Swap tabs are null or empty", function(){
+            try {
+                tabs.swap([], 1);
+            } catch (err) {
+                assert.equal(e.message, "Tabs can't be null or empty");
+            }
+
+        });
+
+        it("Reference to active tab is invalid", function() {
+
+        });
+
+        it("Multiple tabs are active should reset all of them", function() {
+
+        });
+
+        it("Active tab is already ative", function() {
+
+        });
 
         it("Apply class to element with no existing class", function(){
             var element = createElement("div");
