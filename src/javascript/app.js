@@ -6,10 +6,6 @@
 
     var tabs = require("./tabs.js");
 
-    //exports.createTab = function createTab(contentElemetId, tabElementId) {
-    //    return {contentElement: document.getElementById(contentElemetId), tabElement: document.getElementById(tabElementId)};
-    //}
-
     document.addEventListener("DOMContentLoaded", function(){
        console.log("DOM Loaded");
 

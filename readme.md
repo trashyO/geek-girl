@@ -11,10 +11,10 @@ To try the code
 5. Change to directory that will contain the project
 6. Clone the source code to your computer 'git clone <git-repository>'
 7. `cd <project directory>`
-8. Run build `jake` will run the default taks
-9. Run unit-tests `jake unit-tests`
-10. Run integration tests `jake integration-tests`
-11. Run acceptance tests `jake acceptance-tests`
+8. Run application `./jake.sh run` point browser to `localhost:8080`
+9. Run build `./jake.sh` will run the default task
+10. Run `./jake.sh karama` and point browsers to `localhost:9876` to test on that browser
+11. Run unit-tests using karma for cross browser testing`./jake.sh tests`
 12. To discover all jake commands `jake -T`
 
 
